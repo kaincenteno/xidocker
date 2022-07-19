@@ -18,15 +18,15 @@ RUN apt-get update && apt-get install -y \
 ENV CC=/usr/bin/clang-11
 ENV CXX=/usr/bin/clang++-11
 
-ADD server server
+ADD . xidocker
 
-RUN cd server && \
+RUN cd xidocker/server && \
     mkdir build && \
     cd build && \
     cmake .. && \
     make -j $(nproc)
 
-WORKDIR /server
+WORKDIR /xidocker/server
 
 RUN chmod +x ./tools/wait_for_db_then_launch.sh
 

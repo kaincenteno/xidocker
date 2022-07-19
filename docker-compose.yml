@@ -24,6 +24,8 @@ services:
       - XI_NETWORK_SQL_DATABASE=${SQL_DATABASE}
       - XI_NETWORK_SQL_LOGIN=${SQL_USER}
       - XI_NETWORK_SQL_PASSWORD=${SQL_PASSWORD}
+      - XI_MAP_AH_LIST_LIMIT=0
+      - XI_SEARCH_EXPIRE_AUCTIONS=false
     ports:
       - '54230:54230/tcp'
       - '54231:54231/tcp'
