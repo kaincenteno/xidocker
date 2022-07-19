@@ -8,13 +8,11 @@ RUN apt-get update && apt-get install -y \
     software-properties-common  \
     cmake \
     make \
-    libluajit-5.1-dev \
     libzmq3-dev \
     libssl-dev \
     zlib1g-dev \
-    mariadb-server \
+    mariadb-client \
     libmariadb-dev \
-    luarocks \
     pip
 
 ENV CC=/usr/bin/clang-11
