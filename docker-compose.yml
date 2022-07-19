@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  # The DB service
+  xidb:
+    image: mariadb:jammy
+    restart: always
+    environment:
+      - MYSQL_USER=${SQL_USER}
+      - MYSQL_PASSWORD=${SQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${SQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${SQL_DATABASE}
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./server/sql:/docker-entrypoint-initdb.d
+
+  xigame:
+    build: .
+    restart: always
+    environment:
+      - XI_NETWORK_SQL_HOST=${SQL_HOST}
+      - XI_NETWORK_SQL_PORT=${SQL_PORT}
+      - XI_NETWORK_SQL_DATABASE=${SQL_DATABASE}
+      - XI_NETWORK_SQL_LOGIN=${SQL_USER}
+      - XI_NETWORK_SQL_PASSWORD=${SQL_PASSWORD}
+    ports:
+      - '54230:54230/tcp'
+      - '54231:54231/tcp'
+      - '54001:54001/tcp'
+      - '54002:54002/tcp'
+      - '54230:54230/udp'
+    depends_on:
+      - xidb
