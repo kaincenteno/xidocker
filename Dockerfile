@@ -22,6 +22,7 @@ ENV CXX=/usr/bin/clang++-11
 ADD . xidocker
 
 RUN cd xidocker/server && \
+    pip install -r tools/requirements.txt && \
     mkdir build && \
     cd build && \
     cmake .. && \
