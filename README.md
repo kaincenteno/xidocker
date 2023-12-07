@@ -1,1 +1,1 @@
-This repo exists an easy docker container of a LandSandBoat server
+This repo was easy docker container of server
